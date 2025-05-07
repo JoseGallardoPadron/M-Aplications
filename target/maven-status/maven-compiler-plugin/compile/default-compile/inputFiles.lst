@@ -1,0 +1,8 @@
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/VaccineAplicationApplication.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/config/CorsConfig.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/controller/VaccineApplicationsController.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/dto/CycleLifeDTO.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/dto/ShedDTO.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/model/VaccineApplicationsModel.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/repository/VaccineApplicationsRepository.java
+/workspace/ms-vaccineaplications/src/main/java/pe/edu/vallegrande/VaccineAplication/services/VaccineApplicationsServices.java
