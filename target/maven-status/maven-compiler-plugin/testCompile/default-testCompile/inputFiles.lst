@@ -1,1 +1,4 @@
+/workspace/ms-vaccineaplications/src/test/java/pe/edu/vallegrande/VaccineAplication/integration/CycleLifeClientMockitoTest.java
 /workspace/ms-vaccineaplications/src/test/java/pe/edu/vallegrande/VaccineAplication/VaccineAplicationApplicationTests.java
+/workspace/ms-vaccineaplications/src/test/java/pe/edu/vallegrande/VaccineAplication/controller/VaccineApplicationsControllerTest.java
+/workspace/ms-vaccineaplications/src/test/java/pe/edu/vallegrande/VaccineAplication/service/VaccineApplicationsServicesTest.java

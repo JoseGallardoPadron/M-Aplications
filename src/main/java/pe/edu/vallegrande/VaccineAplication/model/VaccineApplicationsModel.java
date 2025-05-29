@@ -21,31 +21,33 @@ public class VaccineApplicationsModel {
     @Column("end_date") // Fecha de finalización de la aplicación de la vacuna
     private LocalDate endDate;
 
-    @Column("cycle_life_id") // Relación con la tabla cycle_life
-    private Long cycleLifeId; // Cambiado de vaccineId a cycleLifeId
+    @Column("hen_id") // Identificador del gallinero
+    private Long henId; // Identificador del gallinero
 
-    @Column("shed_id") // Relación con la tabla shed
-    private Long shedId;
+    @Column("via_application") // Método de aplicación de la vacuna
+    private String viaApplication; // Método de aplicación (solo letras)
+
+    @Column("cycle_life_id") // Relación con la tabla cycle_life
+    private Long cycleLifeId; // Relación con el ciclo de vida (ya no es foreign key)
 
     @Column("amount") // Cantidad de dosis aplicadas
-    private Integer amount;
+    private Integer amount; // Debe ser mayor que cero
 
     @Column("cost_application") // Costo de la aplicación de la vacuna
-    private BigDecimal costApplication;
+    private BigDecimal costApplication; // Debe ser mayor que cero
 
     @Column("email") // Email del responsable o registrado
-    private String email;
+    private String email; // Debe ser un correo válido
 
     @Column("date_registration") // Fecha en la que se registró el dato
-    private LocalDate dateRegistration;
+    private LocalDate dateRegistration; // Fecha de registro
 
     @Column("quantity_birds") // Número de aves vacunadas
-    private Integer quantityBirds;
+    private Integer quantityBirds; // Número de aves vacunadas
 
     @Column("active") // Estado: 'A' = Activo, 'I' = Inactivo
-    private String active; // O usa `Boolean active;` si en la BD es tipo boolean
+    private String active = "A";  // Activo por defecto
 
     @Column("times_in_weeks") // Número de veces que se aplica la vacuna
-    private String  timesInWeeks;
-
+    private String timesInWeeks; // Frecuencia de aplicación
 }

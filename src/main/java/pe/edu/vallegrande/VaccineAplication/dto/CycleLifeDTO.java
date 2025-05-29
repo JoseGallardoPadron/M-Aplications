@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class CycleLifeDTO {
     private Long cycleLifeId;
+    private Long henId;
     private LocalDate endDate;
     private String timesInWeeks;
     private String nameIto;  // Nuevo campo agregado
@@ -15,6 +16,15 @@ public class CycleLifeDTO {
 
     public void setCycleLifeId(Long cycleLifeId) {
         this.cycleLifeId = cycleLifeId;
+    }
+
+    // Getter y Setter para henId
+    public Long getHenId() {
+        return henId;
+    }
+
+    public void setHenId(Long henId) {
+        this.henId = henId;
     }
 
     // Getter y Setter para endDate
@@ -49,9 +59,10 @@ public class CycleLifeDTO {
     public String toString() {
         return "CycleLifeDTO{" +
                "cycleLifeId=" + cycleLifeId +
+               ", henId=" + henId +
                ", endDate=" + endDate +
                ", timesInWeeks='" + timesInWeeks + '\'' +
-               ", nameIto='" + nameIto + '\'' +  // Incluir el nuevo campo en toString
+               ", nameIto='" + nameIto + '\'' +
                '}';
     }
 }
