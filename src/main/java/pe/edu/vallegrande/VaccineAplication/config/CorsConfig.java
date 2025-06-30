@@ -1,4 +1,4 @@
-package pe.edu.vallegrande.Vaccine.config;
+package pe.edu.vallegrande.VaccineAplication.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,14 +10,14 @@ import org.springframework.web.server.ServerWebExchange;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 
 @Configuration
 public class CorsConfig {
-
+    
     private static final List<String> STATIC_ALLOWED_ORIGINS = Arrays.asList(
-            "http://localhost:4200"
+            "http://localhost:4200",
+            "https://ms-vaccineaplications.onrender.com"
     );
 
     private static final Pattern GITPOD_REGEX = Pattern.compile(
@@ -27,23 +27,43 @@ public class CorsConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
+        
+        // Set allowed methods
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+        
+        // Set allowed headers
+        config.setAllowedHeaders(Arrays.asList("*"));
+        
+        // Allow credentials
         config.setAllowCredentials(true);
-        config.setMaxAge(3600L); // Cache preflight for 1 hour
-
-        CorsConfigurationSource source = new UrlBasedCorsConfigurationSource() {
+        
+        // Set max age for preflight cache
+        config.setMaxAge(3600L);
+        
+        // Create the configuration source
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(ServerWebExchange exchange) {
                 String origin = exchange.getRequest().getHeaders().getOrigin();
+                
                 if (isAllowedOrigin(origin)) {
-                    config.setAllowedOrigins(List.of(origin)); // Solo permitir origen válido
-                    return config;
+                    CorsConfiguration dynamicConfig = new CorsConfiguration();
+                    dynamicConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+                    dynamicConfig.setAllowedHeaders(Arrays.asList("*"));
+                    dynamicConfig.setAllowCredentials(true);
+                    dynamicConfig.setMaxAge(3600L);
+                    dynamicConfig.setAllowedOrigins(Arrays.asList(origin));
+                    return dynamicConfig;
                 }
-                return null; // Bloquea CORS si el origen no es válido
+                
+                // Fallback configuration for unmatched origins
+                return null;
             }
         };
-
+        
+        // Register the configuration for all paths
+        source.registerCorsConfiguration("/**", config);
+        
         return new CorsWebFilter(source);
     }
 
